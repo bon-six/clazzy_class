@@ -1,0 +1,17 @@
+{% extends "QuesApp/base.html" %}
+
+{% block header %}
+    <h1>The Questionnaire</h1>
+{% endblock %}
+
+{% block items %}
+    {% if question_list %}
+    <ol>
+        {% for question in question_list %}
+        <li>
+            <a href="{% url 'question_detail' question.pk %}">{{question.question_text}}</a>
+        </li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+{% endblock %}

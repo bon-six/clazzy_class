@@ -1,0 +1,15 @@
+{% extends "QuesApp/base.html" %}
+
+{% block header %}
+    <h1>{{object.question_text}}</h1>
+{% endblock %}
+
+{% block items %}
+    {% if question.choice_set.all %}
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <li>{{choice.choice_text}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
