@@ -1,0 +1,36 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+header {
+    border-bottom: 1px solid #999;
+    margin-bottom: 2rem;
+    display: flex;
+}
+.nav-left {
+    margin-right: auto;
+}
+.nav-right {
+    display: flex;
+    align-items: flex-end;
+}
+.img1{
+    width: 100px;
+    height: auto;
+    float: left;
+}
+.img2{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+.flex-wrapper{
+    display:flex;
+}
+.highlight-red {
+    color:red;
+    font-weight: bold;
+    font-size: 1.2em;
+}

@@ -1,0 +1,26 @@
+{% extends "QuesApp/base.html" %}
+{% load static %}
+
+{% block banner %}
+    <img class="img2" src="{% static 'QuesApp/img/art-questionnaire.png' %}" />
+{% endblock %}
+
+{% block content-header %}
+    <h1>{{object.question_text}}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if question.choice_set.all %}
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <li>{{choice.choice_text}}
+            <span class="highlight-red">
+                {{ choice.vote_set.all.count }}
+            </span> user voted
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <hr>
+    <a href="{% url 'home' %}">back to question list</a>
+{% endblock %}

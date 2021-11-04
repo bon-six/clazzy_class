@@ -1,10 +1,15 @@
 {% extends "QuesApp/base.html" %}
+{% load static %}
 
-{% block header %}
+{% block banner %}
+    <img class="img2" src="{% static 'QuesApp/img/art-questionnaire.png' %}" />
+{% endblock %}
+
+{% block content-header %}
     <h1>{{object.question_text}}</h1>
 {% endblock %}
 
-{% block items %}
+{% block content %}
     {% if question.choice_set.all %}
     <ul>
         {% for choice in question.choice_set.all %}
@@ -12,4 +17,6 @@
         {% endfor %}
     </ul>
     {% endif %}
+    <hr>
+    <a href="{% url 'vote_result' question.pk %}">check vote result</a>
 {% endblock %}
