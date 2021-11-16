@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice, Vote
+from .models import Question, Choice, Vote, Comment
 
 # Register your models here.
 class ChoiceInline(admin.TabularInline):
@@ -21,3 +21,8 @@ class ReadonlyAdminMixin():
 class VoteAdmin(ReadonlyAdminMixin, admin.ModelAdmin):
     list_display= ('voter_name', 'vote_data', 'choice')
 admin.site.register(Vote, VoteAdmin)
+
+
+class CommentAdmin(ReadonlyAdminMixin, admin.ModelAdmin):
+    pass
+admin.site.register(Comment,CommentAdmin)

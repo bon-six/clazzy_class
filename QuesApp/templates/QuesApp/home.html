@@ -7,6 +7,16 @@
 
 {% block content-header %}
     <h1>The Questionnaire</h1>
+    {% if user.is_authenticated %}
+    <p><span>Hi {{ user.username}}.</span> &ensp; 
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+    </p>
+    {% else %}
+    <p>
+        <span><a href="{% url 'login' %}">Log In</a></span>&ensp;
+        <span><a href="{% url 'my_signup' %}">Sign up</a></span>
+    </p>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -19,4 +29,26 @@
         {% endfor %}
     </ol>
     {% endif %}
+    <div>
+        <a href="{% url 'voting_start' %}">Participate the quesitonnaire</a>
+    </div>
+
+    <hr>
+    {% if comment_list %}
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                <a href="{% url 'view_comment' comment.pk %}">
+                    {{comment.comment_title}} by {{comment.user_name}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div>
+        <a href="{% url 'add_comment' %}">
+            leave a comment
+        </a> 
+    </div>
+
 {% endblock %}

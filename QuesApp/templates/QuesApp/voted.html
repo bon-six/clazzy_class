@@ -1,0 +1,36 @@
+{% extends 'QuesApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img1" src="{% static 'QuesApp/img/art-questionnaire.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>
+        {% if error_msg %}
+            ! Wecome {{user}}<br>
+            &ensp; {{ error_msg }}
+        {% else %}
+            Thank you, {{user}}. You are giving those answer to our questions:
+        {% endif %}
+    </h2>
+{% endblock %}
+
+{% block content %}
+    {% if error_msg %}
+        {% for vote in voted_set %}
+            <h4>{{vote.choice.question.question_text}}</h4>
+            <p>{{vote.choice.choice_text}}</p>
+        {% endfor %}
+        <a href="{% url 'home' %}">OK</a>
+    {% else %}
+        {% for question, choice in voting_set %}
+            <h4>{{question.question_text}}</h4>
+            <p>{{choice.choice_text}}</p>
+        {% endfor %}
+        <form action="" method="POST"> {% csrf_token %}
+            <input type="submit" value="confirm">
+            <a href="{% url 'home' %}">Cancel</a>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'QuesApp/base.html' %}
+
+{% block content_header %}
+    <h2>Login to My Questionnaire Site</h2>
+{% endblock %}
+
+
+{% block content %}
+    <form action="" method="POST"> {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" >Log In </button>
+    </form>
+{% endblock %}

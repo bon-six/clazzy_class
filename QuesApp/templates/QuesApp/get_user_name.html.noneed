@@ -1,0 +1,25 @@
+{% extends 'QuesApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img1" src="{% static 'QuesApp/img/art-questionnaire.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Thank you very much for participate</h2>
+{% endblock %}
+
+
+{% block content %}
+    {% if error_msg %}
+        <p>! {{error_msg}} </p>
+    {% endif %}
+    <p>Please give us your name first:</p>
+    <form action="" method="POST"> {% csrf_token %}
+        <fieldset>
+            <label for="user_name">Your name</label>
+            <input type="text" name="user_name" id="user_name" maxlength="100">
+        </fieldset>
+        <input type="submit" value="start">
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'QuesApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img2" src="{% static 'QuesApp/img/commments.jpg' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Delete {{comment.comment_title}}</h2>
+    <div class="flex-wrapper">
+        <div>by: {{comment.user_name}}</div> &emsp;&emsp;
+        <div>data: {{comment.comment_date}}</div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ comment.comment_title }}"?</p>
+        <input type="submit" value="Confirm" /> &emsp; 
+        <a href="{% url 'home' %}">Cancel</a>
+    </form>
+{% endblock content %}

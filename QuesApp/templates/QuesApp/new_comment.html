@@ -1,0 +1,18 @@
+{% extends 'QuesApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img2" src="{% static 'QuesApp/img/comments.jpg' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Add a comment: </h2>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Comment" />
+        <a href="{% url 'home' %}">Cancel</a>
+    </form>
+{% endblock %}

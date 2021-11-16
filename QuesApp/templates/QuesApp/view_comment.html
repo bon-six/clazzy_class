@@ -1,0 +1,32 @@
+{% extends 'QuesApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img2" src="{% static 'QuesApp/img/comments.jpg' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>{{comment.comment_title}}</h2>
+    <div class="flex-wrapper">
+        <div>by: {{comment.user_name}}</div> &emsp;&emsp;
+        <div>date: {{comment.comment_date}}</div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p>{{comment.comment_content}}</p>
+
+    <hr>
+    <div class="flex-wrapper">
+        <div>
+            <a href="{% url 'edit_comment' comment.pk %}">
+                Edit
+            </a>
+        </div>&emsp;
+        <div>
+            <a href="{% url 'del_comment' comment.pk %}">
+                Delete
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'QuesApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img1" src="{% static 'QuesApp/img/art-questionnaire.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>{{ question.question_text }}</h2>
+{% endblock %}
+
+{% block content %}
+    {% if error_msg %}
+        <p>! {{erro_msg}} </p>
+    {% endif %}
+    <form action="" method="post"> {% csrf_token %}
+        {{form.as_p}}
+        {% comment %}
+        <fieldset>
+            {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{forloop.counter}}">
+            <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br>
+            {% endfor %}
+        </fieldset>
+        {% endcomment %}
+        <input type="submit" value="Vote">
+    </form>
+{% endblock %}
